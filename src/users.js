@@ -58,6 +58,29 @@ router.put("/:id",(req,res)=>{
       res.send(users);
     }
   })
+});
+/ put theo số đt
+router.put("/",(req,res)=>{
+  usersModel.findOneAndUpdate({
+    phoneNumber:req.query.phone
+  },{
+    $set:{name:req.body.name,
+      age:req.body.age,
+      address:req.body.address,
+      phoneNumber:req.body.phoneNumber,
+      email:req.body.email,
+      gender:req.body.gender},
+    
+  },{
+    upsert:true
+  },(err,users)=>{
+    if(err){
+      res.send("lỗi khi update")
+    }
+    else{
+      res.send(users);
+    }
+  })
 })
 // delete
 router.delete("/:id",(req,res)=>{
