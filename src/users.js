@@ -19,7 +19,7 @@ router.post('/', function(req, res, next) {
       }
       else{
         console.log('lưu thong tin thành công',docs)
-        res.send(car)
+        res.send(user)
       }
     })
 });
